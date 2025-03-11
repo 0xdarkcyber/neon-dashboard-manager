@@ -35,7 +35,7 @@ const Index = () => {
         </p>
         
         <Button
-          className="gray-glow-effect relative font-mono text-lg group hover:shadow-[0_0_2rem_-0.5rem] hover:shadow-gray-300/40 transition-all duration-300"
+          className="neon-green-glow relative font-mono text-lg group hover:shadow-[0_0_2rem_-0.5rem] hover:shadow-[#4AFF8F]/40 transition-all duration-300"
           size="lg"
         >
           <Terminal className="mr-2 h-5 w-5" />

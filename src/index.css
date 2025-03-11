@@ -67,7 +67,7 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent animate-text-shine;
   }
   
-  /* New gray neon glow effect */
+  /* Gray neon glow effect */
   .gray-glow-effect {
     @apply relative;
   }
@@ -82,6 +82,19 @@
   
   .gray-glow-text {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-gray-400 via-gray-200 to-white animate-text-shine;
+  }
+
+  /* Neon green glow effect */
+  .neon-green-glow {
+    @apply relative bg-[#0A1C15] border border-[#4AFF8F]/30;
+  }
+  
+  .neon-green-glow::before {
+    @apply content-[''] absolute -inset-1 bg-gradient-to-r from-[#4AFF8F]/40 to-[#4AFF8F]/20 rounded-lg blur opacity-75 transition-opacity duration-300;
+  }
+  
+  .neon-green-glow:hover::before {
+    @apply opacity-100;
   }
 
   .terminal-text {
