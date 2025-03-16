@@ -7,7 +7,6 @@ import { AccountData } from "./AddAccountModal";
 import { 
   Edit, 
   Trash2, 
-  ExternalLink,
   AlertCircle
 } from "lucide-react";
 import { toast } from "sonner";
@@ -45,30 +44,30 @@ export const AccountCard = ({
   };
   
   return (
-    <Card className={`card-stats p-4 ${!account.isActive ? 'opacity-70' : ''}`}>
+    <Card className={`card-stats p-4 animated-border ${!account.isActive ? 'opacity-70' : ''}`}>
       <div className="flex justify-between items-start">
         <div>
           <h3 className="font-mono font-bold flex items-center gap-2">
             {account.name}
             {!account.isActive && (
-              <span className="text-xs bg-muted px-2 py-0.5 rounded-full text-muted-foreground">
+              <span className="text-xs bg-gray-800 px-2 py-0.5 rounded-full text-gray-400">
                 Inativa
               </span>
             )}
           </h3>
-          <p className="text-xs text-muted-foreground font-mono flex items-center gap-1">
+          <p className="text-xs text-gray-500 font-mono flex items-center gap-1">
             <span>Último uso: {account.lastUsed || "Nunca"}</span>
           </p>
         </div>
         <div className="flex items-center gap-1">
           <div className="flex items-center mr-2">
-            <span className="text-xs mr-2 text-muted-foreground">
+            <span className="text-xs mr-2 text-gray-500">
               {account.isActive ? "On" : "Off"}
             </span>
             <Switch 
               checked={account.isActive} 
               onCheckedChange={handleToggle}
-              className="data-[state=checked]:bg-accent"
+              className="data-[state=checked]:bg-gray-500"
             />
           </div>
           <Button 
@@ -91,16 +90,16 @@ export const AccountCard = ({
       </div>
       
       <div className="mt-6 grid grid-cols-3 gap-3 text-sm font-mono">
-        <div className="bg-background/50 rounded p-2">
-          <p className="text-xs text-muted-foreground">Raffles Total</p>
+        <div className="bg-gray-900/50 rounded p-2">
+          <p className="text-xs text-gray-500">Raffles Total</p>
           <p className="font-bold">{account.stats?.totalRaffles || 0}</p>
         </div>
-        <div className="bg-background/50 rounded p-2">
-          <p className="text-xs text-muted-foreground">Vitórias</p>
+        <div className="bg-gray-900/50 rounded p-2">
+          <p className="text-xs text-gray-500">Vitórias</p>
           <p className="font-bold">{account.stats?.wins || 0}</p>
         </div>
-        <div className="bg-background/50 rounded p-2">
-          <p className="text-xs text-muted-foreground">Taxa</p>
+        <div className="bg-gray-900/50 rounded p-2">
+          <p className="text-xs text-gray-500">Taxa</p>
           <p className="font-bold">
             {account.stats?.totalRaffles 
               ? ((account.stats.wins / account.stats.totalRaffles) * 100).toFixed(1) + '%'

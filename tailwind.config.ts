@@ -54,6 +54,10 @@ export default {
           300: "#C8C8C9",
           400: "#8E9196",
           500: "#8A898C",
+          600: "#555555",
+          700: "#333333",
+          800: "#222222",
+          900: "#111111",
         },
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -79,15 +83,26 @@ export default {
           "0%, 100%": { opacity: "1", transform: "scale(1)" },
           "50%": { opacity: "0.7", transform: "scale(0.95)" },
         },
+        "border-flow": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
+        "subtle-pulse": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.85" },
+        },
       },
       animation: {
         "glow": "glow 2s ease-in-out infinite",
         "float": "float 3s ease-in-out infinite",
         "pulse-strong": "pulse-strong 3s ease-in-out infinite",
+        "border-flow": "border-flow 6s ease infinite",
+        "subtle-pulse": "subtle-pulse 3s ease-in-out infinite",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'cyber-grid': 'linear-gradient(to right, rgba(100, 220, 255, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(100, 220, 255, 0.1) 1px, transparent 1px)',
+        'cyber-grid': 'linear-gradient(to right, rgba(150, 150, 150, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(150, 150, 150, 0.1) 1px, transparent 1px)',
       },
     },
   },

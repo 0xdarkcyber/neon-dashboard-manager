@@ -89,7 +89,7 @@ export const AddAccountModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] bg-card border-border/50 font-mono">
+      <DialogContent className="sm:max-w-[500px] bg-card border-gray-700/50 font-mono animated-border">
         <DialogHeader>
           <DialogTitle className="text-xl font-mono">
             {isEdit ? `Editar Conta: ${editData?.name}` : "Adicionar Nova Conta"}
@@ -97,9 +97,9 @@ export const AddAccountModal = ({
         </DialogHeader>
         
         <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-4">
-          <TabsList className="w-full">
-            <TabsTrigger value="account" className="flex-1">Dados da Conta</TabsTrigger>
-            <TabsTrigger value="webhooks" className="flex-1">Webhooks</TabsTrigger>
+          <TabsList className="w-full bg-gray-800">
+            <TabsTrigger value="account" className="flex-1 data-[state=active]:bg-gray-700">Dados da Conta</TabsTrigger>
+            <TabsTrigger value="webhooks" className="flex-1 data-[state=active]:bg-gray-700">Webhooks</TabsTrigger>
           </TabsList>
           
           <form onSubmit={handleSubmit}>
@@ -111,7 +111,7 @@ export const AddAccountModal = ({
                   placeholder="Ex: Conta Principal"
                   value={accountName}
                   onChange={(e) => setAccountName(e.target.value)}
-                  className="bg-background border-border/50 focus:border-[#4AFF8F]/50 focus:ring-[#4AFF8F]/20"
+                  className="bg-gray-800 border-gray-700/50 focus:border-gray-500/50 focus:ring-gray-500/20"
                 />
               </div>
               
@@ -123,7 +123,7 @@ export const AddAccountModal = ({
                   placeholder="Cole sua API key aqui"
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
-                  className="bg-background border-border/50 focus:border-[#4AFF8F]/50 focus:ring-[#4AFF8F]/20"
+                  className="bg-gray-800 border-gray-700/50 focus:border-gray-500/50 focus:ring-gray-500/20"
                 />
               </div>
             </TabsContent>
@@ -141,12 +141,13 @@ export const AddAccountModal = ({
                 variant="outline" 
                 onClick={onClose}
                 disabled={isLoading}
+                className="border-gray-700 hover:bg-gray-800"
               >
                 Cancelar
               </Button>
               <Button 
                 type="submit" 
-                className="neon-green-glow"
+                className="white-glow bg-gray-800 hover:bg-gray-700"
                 disabled={isLoading}
               >
                 {isLoading ? 
