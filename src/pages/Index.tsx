@@ -30,10 +30,6 @@ const Index = () => {
           </h1>
         </div>
         
-        <p className="text-muted-foreground font-mono max-w-[600px] mx-auto">
-          Sistema de gerenciamento de contas Alphabot para automação de raffles
-        </p>
-        
         <Button
           className="neon-green-glow relative font-mono text-lg group hover:shadow-[0_0_2rem_-0.5rem] hover:shadow-[#4AFF8F]/40 transition-all duration-300"
           size="lg"
@@ -43,11 +39,6 @@ const Index = () => {
             Login com Discord
           </span>
         </Button>
-      </div>
-      
-      <div className="fixed bottom-4 left-4 font-mono text-sm text-muted-foreground">
-        <span className="inline-block w-2 h-2 bg-gray-400 rounded-full animate-pulse mr-2" />
-        Sistema operacional
       </div>
     </div>
   );

@@ -3,8 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
 import { BarChart3, Settings, Bell, Layers, User, LogOut } from "lucide-react";
 
 const AccountSettings = () => {
@@ -73,8 +71,6 @@ const AccountSettings = () => {
         <Tabs defaultValue="webhooks" className="mb-8">
           <TabsList className="mb-4">
             <TabsTrigger value="webhooks" className="font-mono">Webhooks Discord</TabsTrigger>
-            <TabsTrigger value="bot" className="font-mono">Ajustes do Bot</TabsTrigger>
-            <TabsTrigger value="advanced" className="font-mono">Configurações Avançadas</TabsTrigger>
           </TabsList>
           
           <TabsContent value="webhooks">
@@ -83,7 +79,7 @@ const AccountSettings = () => {
               
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="main-webhook" className="font-mono">Webhook Principal</Label>
+                  <label htmlFor="main-webhook" className="font-mono">Webhook Principal</label>
                   <Input 
                     id="main-webhook" 
                     placeholder="https://discord.com/api/webhooks/..." 
@@ -93,7 +89,7 @@ const AccountSettings = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="error-webhook" className="font-mono">Webhook de Erros</Label>
+                  <label htmlFor="error-webhook" className="font-mono">Webhook de Erros</label>
                   <Input 
                     id="error-webhook" 
                     placeholder="https://discord.com/api/webhooks/..." 
@@ -103,78 +99,13 @@ const AccountSettings = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="win-webhook" className="font-mono">Webhook de Vitórias</Label>
+                  <label htmlFor="win-webhook" className="font-mono">Webhook de Vitórias</label>
                   <Input 
                     id="win-webhook" 
                     placeholder="https://discord.com/api/webhooks/..." 
                     className="bg-background border-border/50 font-mono"
                   />
                   <p className="text-sm text-muted-foreground font-mono">Notificações de raffles ganhas</p>
-                </div>
-                
-                <Button className="neon-green-glow">Salvar Configurações</Button>
-              </div>
-            </Card>
-          </TabsContent>
-          
-          <TabsContent value="bot">
-            <Card className="card-stats p-6">
-              <h3 className="font-mono text-lg font-bold mb-4">Ajustes do Bot</h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-mono">Modo Agressivo</p>
-                    <p className="text-sm text-muted-foreground font-mono">Aumenta a velocidade de entrada em raffles, mas pode gerar mais falhas</p>
-                  </div>
-                  <Switch id="aggressive-mode" />
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-mono">Modo Silencioso</p>
-                    <p className="text-sm text-muted-foreground font-mono">Reduz as notificações para apenas eventos críticos</p>
-                  </div>
-                  <Switch id="silent-mode" />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="retry-attempts" className="font-mono">Tentativas de Retry</Label>
-                  <Input 
-                    id="retry-attempts" 
-                    type="number" 
-                    defaultValue="3"
-                    className="bg-background border-border/50 font-mono"
-                  />
-                  <p className="text-sm text-muted-foreground font-mono">Número de tentativas em caso de falha</p>
-                </div>
-                
-                <Button className="neon-green-glow">Salvar Configurações</Button>
-              </div>
-            </Card>
-          </TabsContent>
-          
-          <TabsContent value="advanced">
-            <Card className="card-stats p-6">
-              <h3 className="font-mono text-lg font-bold mb-4">Configurações Avançadas</h3>
-              
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="proxy-list" className="font-mono">Lista de Proxies</Label>
-                  <textarea 
-                    id="proxy-list" 
-                    className="w-full min-h-[150px] p-3 rounded-md bg-background border border-border/50 font-mono"
-                    placeholder="ip:port:username:password"
-                  ></textarea>
-                  <p className="text-sm text-muted-foreground font-mono">Um proxy por linha, formato: ip:porta:usuário:senha</p>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-mono">Rotação de Proxies</p>
-                    <p className="text-sm text-muted-foreground font-mono">Alterna proxies automaticamente em caso de bloqueio</p>
-                  </div>
-                  <Switch id="proxy-rotation" />
                 </div>
                 
                 <Button className="neon-green-glow">Salvar Configurações</Button>
