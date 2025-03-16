@@ -4,20 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
-  BarChart3, 
-  Plus, 
-  Layers, 
   User, 
   LogOut,
-  Settings,
-  Bell,
-  Terminal,
-  Webhook
+  Terminal
 } from "lucide-react";
 import { AddAccountModal, AccountData } from "@/components/AddAccountModal";
 import { AccountCard } from "@/components/AccountCard";
 import { WebhookSettings, WebhookData } from "@/components/WebhookSettings";
-import { Link } from "react-router-dom";
+import { Plus } from "lucide-react";
 import { toast } from "sonner";
 
 const Dashboard = () => {
@@ -135,60 +129,19 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90 text-foreground">
-      {/* Sidebar with elevated design */}
-      <div className="fixed left-0 top-0 bottom-0 w-64 bg-card/90 backdrop-blur-sm border-r border-border/30 p-4">
-        <div className="gray-glow-effect inline-block p-2 mb-8">
-          <Link to="/">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-900/95 to-gray-900/90 text-gray-200">
+      {/* Simple header */}
+      <div className="p-4 border-b border-gray-800/30">
+        <div className="flex justify-between items-center">
+          <div className="gray-glow-effect inline-block p-2">
             <h2 className="text-2xl font-mono font-bold tracking-tighter gray-glow-text">
               ready.boost<span className="animate-pulse">_</span>
             </h2>
-          </Link>
-        </div>
-        
-        <nav className="space-y-1 mt-8">
-          <Button 
-            variant="ghost" 
-            className="w-full justify-start font-mono text-foreground bg-accent/10"
-          >
-            <Terminal className="mr-2 h-5 w-5" />
-            Dashboard
-          </Button>
-          <Button 
-            variant="ghost" 
-            className="w-full justify-start font-mono text-muted-foreground"
-          >
-            <BarChart3 className="mr-2 h-5 w-5" />
-            Estatísticas
-          </Button>
-          <Button 
-            variant="ghost" 
-            className="w-full justify-start font-mono text-muted-foreground"
-          >
-            <Webhook className="mr-2 h-5 w-5" />
-            Webhooks
-          </Button>
-        </nav>
-        
-        <div className="absolute bottom-4 left-4 right-4">
-          <Button 
-            variant="ghost" 
-            className="w-full justify-start font-mono text-destructive"
-          >
-            <LogOut className="mr-2 h-5 w-5" />
-            Logout
-          </Button>
-        </div>
-      </div>
-      
-      {/* Main content with improved UI */}
-      <div className="ml-64 p-6">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-mono font-bold">Dashboard</h1>
+          </div>
           
           <div className="flex items-center gap-4">
             <Button 
-              className="neon-green-glow" 
+              className="bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-gray-600 transition-all duration-300" 
               onClick={() => {
                 resetEditState();
                 setIsModalOpen(true);
@@ -197,22 +150,26 @@ const Dashboard = () => {
               <Plus className="mr-2 h-4 w-4" />
               Nova Conta
             </Button>
-            <Button variant="ghost" className="rounded-full w-10 h-10 p-0">
+            <Button variant="ghost" className="rounded-full w-10 h-10 p-0 bg-gray-800/50 text-gray-300">
               <User className="h-5 w-5" />
             </Button>
           </div>
         </div>
+      </div>
+      
+      <div className="p-6">
+        <h1 className="text-2xl font-mono font-bold mb-8">Sistema avançado de gestão para raffles</h1>
         
         {/* Improved Stats Cards with animations */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {stats.map((stat, index) => (
             <Card 
               key={index} 
-              className="card-stats bg-gradient-to-br from-card/80 to-card/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300"
+              className="bg-gradient-to-br from-gray-800/80 to-gray-800/30 border border-gray-700/30 animate-border-pulse hover:shadow-lg hover:shadow-gray-700/5 transition-all duration-300"
             >
-              <div className="font-mono">
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
-                <p className="text-3xl font-bold gray-glow-text">{stat.value}</p>
+              <div className="font-mono p-4">
+                <p className="text-sm text-gray-400">{stat.label}</p>
+                <p className="text-3xl font-bold text-gray-200">{stat.value}</p>
               </div>
             </Card>
           ))}
@@ -220,18 +177,18 @@ const Dashboard = () => {
         
         {/* Tabs with accounts and webhook settings */}
         <Tabs defaultValue="accounts" className="mb-8">
-          <TabsList className="mb-4">
-            <TabsTrigger value="accounts" className="font-mono">Contas</TabsTrigger>
-            <TabsTrigger value="webhooks" className="font-mono">Webhooks Globais</TabsTrigger>
+          <TabsList className="mb-4 bg-gray-800/50 border border-gray-700/30">
+            <TabsTrigger value="accounts" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Contas</TabsTrigger>
+            <TabsTrigger value="webhooks" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Webhooks Globais</TabsTrigger>
           </TabsList>
           
           <TabsContent value="accounts">
             {/* Filter tabs for accounts */}
             <Tabs defaultValue="all" className="mb-4">
-              <TabsList className="mb-4">
-                <TabsTrigger value="all" className="font-mono">Todas</TabsTrigger>
-                <TabsTrigger value="active" className="font-mono">Ativas</TabsTrigger>
-                <TabsTrigger value="inactive" className="font-mono">Inativas</TabsTrigger>
+              <TabsList className="mb-4 bg-gray-800/50 border border-gray-700/30">
+                <TabsTrigger value="all" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Todas</TabsTrigger>
+                <TabsTrigger value="active" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Ativas</TabsTrigger>
+                <TabsTrigger value="inactive" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Inativas</TabsTrigger>
               </TabsList>
               
               <TabsContent value="all" className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -247,11 +204,11 @@ const Dashboard = () => {
                   ))
                 ) : (
                   <div className="col-span-2 text-center py-12">
-                    <p className="text-muted-foreground font-mono">
+                    <p className="text-gray-400 font-mono">
                       Nenhuma conta cadastrada.{" "}
                       <Button 
                         variant="link" 
-                        className="p-0 h-auto font-mono text-accent"
+                        className="p-0 h-auto font-mono text-gray-300"
                         onClick={() => setIsModalOpen(true)}
                       >
                         Adicionar agora
@@ -276,7 +233,7 @@ const Dashboard = () => {
                     ))
                 ) : (
                   <div className="col-span-2 text-center py-12">
-                    <p className="text-muted-foreground font-mono">
+                    <p className="text-gray-400 font-mono">
                       Nenhuma conta ativa encontrada.
                     </p>
                   </div>
@@ -298,7 +255,7 @@ const Dashboard = () => {
                     ))
                 ) : (
                   <div className="col-span-2 text-center py-12">
-                    <p className="text-muted-foreground font-mono">
+                    <p className="text-gray-400 font-mono">
                       Nenhuma conta inativa encontrada.
                     </p>
                   </div>
@@ -308,9 +265,9 @@ const Dashboard = () => {
           </TabsContent>
           
           <TabsContent value="webhooks">
-            <Card className="card-stats bg-gradient-to-br from-card/80 to-card/30 p-6">
+            <Card className="bg-gradient-to-br from-gray-800/80 to-gray-800/30 border border-gray-700/30 p-6">
               <h3 className="font-mono text-lg font-bold mb-4">Webhooks Discord Globais</h3>
-              <p className="text-sm text-muted-foreground mb-6 font-mono">
+              <p className="text-sm text-gray-400 mb-6 font-mono">
                 Configure webhooks globais para todas as contas. Cada conta pode ter configurações específicas que substituem estas.
               </p>
               

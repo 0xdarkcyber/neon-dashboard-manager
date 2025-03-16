@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -92,6 +91,11 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.85" },
         },
+        "border-pulse": {
+          "0%": { borderColor: "rgba(75, 75, 75, 0.3)" },
+          "50%": { borderColor: "rgba(100, 100, 100, 0.5)" },
+          "100%": { borderColor: "rgba(75, 75, 75, 0.3)" },
+        },
       },
       animation: {
         "glow": "glow 2s ease-in-out infinite",
@@ -99,10 +103,11 @@ export default {
         "pulse-strong": "pulse-strong 3s ease-in-out infinite",
         "border-flow": "border-flow 6s ease infinite",
         "subtle-pulse": "subtle-pulse 3s ease-in-out infinite",
+        "border-pulse": "border-pulse 4s ease-in-out infinite",
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'cyber-grid': 'linear-gradient(to right, rgba(150, 150, 150, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(150, 150, 150, 0.1) 1px, transparent 1px)',
+        'cyber-grid': 'linear-gradient(to right, rgba(75, 75, 75, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(75, 75, 75, 0.1) 1px, transparent 1px)',
       },
     },
   },
