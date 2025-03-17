@@ -129,13 +129,13 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-900/95 to-gray-900/90 text-gray-200">
+    <div className="min-h-screen bg-gray-900 text-gray-200">
       {/* Simple header */}
-      <div className="p-4 border-b border-gray-800/30">
+      <div className="p-4 border-b border-gray-800">
         <div className="flex justify-between items-center">
-          <div className="gray-glow-effect inline-block p-2">
-            <h2 className="text-2xl font-mono font-bold tracking-tighter gray-glow-text">
-              ready.boost<span className="animate-pulse">_</span>
+          <div className="inline-block p-2">
+            <h2 className="text-2xl font-mono font-bold tracking-tighter">
+              ready.boost<span className="text-gray-500">_</span>
             </h2>
           </div>
           
@@ -150,7 +150,7 @@ const Dashboard = () => {
               <Plus className="mr-2 h-4 w-4" />
               Nova Conta
             </Button>
-            <Button variant="ghost" className="rounded-full w-10 h-10 p-0 bg-gray-800/50 text-gray-300">
+            <Button variant="ghost" className="rounded-full w-10 h-10 p-0 bg-gray-800 text-gray-300">
               <User className="h-5 w-5" />
             </Button>
           </div>
@@ -166,7 +166,7 @@ const Dashboard = () => {
               {stats.map((stat, index) => (
                 <Card 
                   key={index} 
-                  className="bg-gradient-to-br from-gray-800/80 to-gray-800/30 border border-gray-700/30 animate-border-subtle hover:shadow-lg hover:shadow-gray-700/5 transition-all duration-300"
+                  className="bg-gray-800 border border-gray-700 hover:shadow-lg transition-all duration-300"
                 >
                   <div className="font-mono p-4">
                     <p className="text-sm text-gray-400">{stat.label}</p>
@@ -178,7 +178,7 @@ const Dashboard = () => {
             
             {/* Accounts and Webhooks Tabs */}
             <Tabs defaultValue="accounts" className="mb-8">
-              <TabsList className="mb-4 bg-gray-800/50 border border-gray-700/30">
+              <TabsList className="mb-4 bg-gray-800 border border-gray-700">
                 <TabsTrigger value="accounts" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Contas</TabsTrigger>
                 <TabsTrigger value="webhooks" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Webhooks Globais</TabsTrigger>
               </TabsList>
@@ -186,7 +186,7 @@ const Dashboard = () => {
               <TabsContent value="accounts">
                 {/* Filter tabs for accounts */}
                 <Tabs defaultValue="all" className="mb-4">
-                  <TabsList className="mb-4 bg-gray-800/50 border border-gray-700/30">
+                  <TabsList className="mb-4 bg-gray-800 border border-gray-700">
                     <TabsTrigger value="all" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Todas</TabsTrigger>
                     <TabsTrigger value="active" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Ativas</TabsTrigger>
                     <TabsTrigger value="inactive" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Inativas</TabsTrigger>
@@ -266,7 +266,7 @@ const Dashboard = () => {
               </TabsContent>
               
               <TabsContent value="webhooks">
-                <Card className="bg-gradient-to-br from-gray-800/80 to-gray-800/30 border border-gray-700/30 p-6">
+                <Card className="bg-gray-800 border border-gray-700 p-6">
                   <h3 className="font-mono text-lg font-bold mb-4">Webhooks Discord Globais</h3>
                   <p className="text-sm text-gray-400 mb-6 font-mono">
                     Configure webhooks globais para todas as contas. Cada conta pode ter configurações específicas que substituem estas.

@@ -33,14 +33,14 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-900/95 to-gray-900/90 flex flex-col justify-center items-center">
+    <div className="min-h-screen bg-gray-900 flex flex-col justify-center items-center">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <h2 className="text-4xl font-mono font-bold tracking-tighter text-gray-200 mb-6">
             ready.boost<span className="text-gray-500">_</span>
           </h2>
           
-          <div className="bg-gray-800/80 border border-gray-700/60 rounded-lg p-6 mb-6 animate-border-subtle">
+          <div className="bg-gray-800 border border-gray-700 rounded-lg p-6 mb-6">
             <pre className="font-mono text-gray-300 text-sm text-left">
               {terminalText}
               <span className="inline-block animate-pulse">▋</span>
