@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { WebhookSettings, WebhookData } from "./WebhookSettings";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
+import { WalletManager, WalletData } from "./WalletManager";
 
 interface AddAccountModalProps {
   isOpen: boolean;
@@ -22,6 +23,7 @@ export interface AccountData {
   apiKey: string;
   isActive: boolean;
   webhooks: WebhookData;
+  wallets?: WalletData[];
   stats?: {
     totalRaffles: number;
     wins: number;
@@ -43,6 +45,7 @@ export const AddAccountModal = ({
     error: "",
     win: ""
   });
+  const [wallets, setWallets] = useState<WalletData[]>(editData?.wallets || []);
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("account");
 
@@ -64,6 +67,7 @@ export const AddAccountModal = ({
         apiKey: apiKey,
         isActive: editData?.isActive ?? true,
         webhooks,
+        wallets,
         stats: editData?.stats || {
           totalRaffles: 0,
           wins: 0
@@ -81,6 +85,7 @@ export const AddAccountModal = ({
         setAccountName("");
         setApiKey("");
         setWebhooks({ main: "", error: "", win: "" });
+        setWallets([]);
       }
       
       onClose();
@@ -100,6 +105,7 @@ export const AddAccountModal = ({
           <TabsList className="w-full bg-gray-800">
             <TabsTrigger value="account" className="flex-1 data-[state=active]:bg-gray-700">Dados da Conta</TabsTrigger>
             <TabsTrigger value="webhooks" className="flex-1 data-[state=active]:bg-gray-700">Webhooks</TabsTrigger>
+            <TabsTrigger value="wallets" className="flex-1 data-[state=active]:bg-gray-700">Wallets</TabsTrigger>
           </TabsList>
           
           <form onSubmit={handleSubmit}>
@@ -135,6 +141,13 @@ export const AddAccountModal = ({
               />
             </TabsContent>
             
+            <TabsContent value="wallets">
+              <WalletManager 
+                onSave={setWallets}
+                initialWallets={wallets}
+              />
+            </TabsContent>
+            
             <DialogFooter className="mt-6">
               <Button 
                 type="button" 
@@ -147,7 +160,7 @@ export const AddAccountModal = ({
               </Button>
               <Button 
                 type="submit" 
-                className="white-glow bg-gray-800 hover:bg-gray-700"
+                className="bg-gray-800 hover:bg-gray-700"
                 disabled={isLoading}
               >
                 {isLoading ? 
