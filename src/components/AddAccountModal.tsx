@@ -94,42 +94,57 @@ export const AddAccountModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] bg-card border-gray-700/50 font-mono animated-border">
+      <DialogContent className="sm:max-w-[500px] bg-gray-900 border-gray-800 text-gray-300">
         <DialogHeader>
-          <DialogTitle className="text-xl font-mono">
+          <DialogTitle className="text-xl font-mono text-gray-300">
             {isEdit ? `Editar Conta: ${editData?.name}` : "Adicionar Nova Conta"}
           </DialogTitle>
         </DialogHeader>
         
         <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-4">
-          <TabsList className="w-full bg-gray-800">
-            <TabsTrigger value="account" className="flex-1 data-[state=active]:bg-gray-700">Dados da Conta</TabsTrigger>
-            <TabsTrigger value="webhooks" className="flex-1 data-[state=active]:bg-gray-700">Webhooks</TabsTrigger>
-            <TabsTrigger value="wallets" className="flex-1 data-[state=active]:bg-gray-700">Wallets</TabsTrigger>
+          <TabsList className="w-full bg-gray-800 border border-gray-700">
+            <TabsTrigger 
+              value="account" 
+              className="flex-1 text-gray-400 data-[state=active]:bg-gray-900 data-[state=active]:text-gray-300"
+            >
+              Dados da Conta
+            </TabsTrigger>
+            <TabsTrigger 
+              value="webhooks" 
+              className="flex-1 text-gray-400 data-[state=active]:bg-gray-900 data-[state=active]:text-gray-300"
+            >
+              Webhooks
+            </TabsTrigger>
+            <TabsTrigger 
+              value="wallets" 
+              className="flex-1 text-gray-400 data-[state=active]:bg-gray-900 data-[state=active]:text-gray-300"
+            >
+              Wallets
+            </TabsTrigger>
           </TabsList>
           
           <form onSubmit={handleSubmit}>
             <TabsContent value="account" className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Nome da Conta</Label>
+                <Label htmlFor="name" className="text-gray-300">Nome da Conta</Label>
                 <Input
                   id="name"
                   placeholder="Ex: Conta Principal"
                   value={accountName}
                   onChange={(e) => setAccountName(e.target.value)}
-                  className="bg-gray-800 border-gray-700/50 focus:border-gray-500/50 focus:ring-gray-500/20"
+                  className="bg-gray-800 border-gray-700 focus:border-gray-600 text-gray-300 placeholder-gray-500"
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="apiKey">API Key</Label>
+                <Label htmlFor="apiKey" className="text-gray-300">API Key</Label>
                 <Input
                   id="apiKey"
                   type="password"
                   placeholder="Cole sua API key aqui"
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
-                  className="bg-gray-800 border-gray-700/50 focus:border-gray-500/50 focus:ring-gray-500/20"
+                  className="bg-gray-800 border-gray-700 focus:border-gray-600 text-gray-300 placeholder-gray-500"
                 />
               </div>
             </TabsContent>
@@ -148,19 +163,19 @@ export const AddAccountModal = ({
               />
             </TabsContent>
             
-            <DialogFooter className="mt-6">
+            <DialogFooter className="mt-6 gap-2">
               <Button 
                 type="button" 
                 variant="outline" 
                 onClick={onClose}
                 disabled={isLoading}
-                className="border-gray-700 hover:bg-gray-800"
+                className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
               >
                 Cancelar
               </Button>
               <Button 
                 type="submit" 
-                className="bg-gray-800 hover:bg-gray-700"
+                className="bg-gray-800 hover:bg-gray-700 text-gray-300"
                 disabled={isLoading}
               >
                 {isLoading ? 

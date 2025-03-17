@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -77,10 +78,10 @@
 
 .animate-border-subtle {
   position: relative;
-  border: 1px solid rgba(75, 75, 75, 0.3);
+  border: 1px solid rgba(50, 50, 50, 0.5);
   transition: border-color 0.3s ease;
 }
 
 .animate-border-subtle:hover {
-  border-color: rgba(100, 100, 100, 0.5);
+  border-color: rgba(75, 75, 75, 0.7);
 }
