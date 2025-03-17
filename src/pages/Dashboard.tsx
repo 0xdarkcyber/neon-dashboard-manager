@@ -6,12 +6,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   User, 
   LogOut,
-  Terminal
+  Plus
 } from "lucide-react";
 import { AddAccountModal, AccountData } from "@/components/AddAccountModal";
 import { AccountCard } from "@/components/AccountCard";
 import { WebhookSettings, WebhookData } from "@/components/WebhookSettings";
-import { Plus } from "lucide-react";
+import { WhitelistPanel } from "@/components/WhitelistPanel";
 import { toast } from "sonner";
 
 const Dashboard = () => {
@@ -158,126 +158,134 @@ const Dashboard = () => {
       </div>
       
       <div className="p-6">
-        <h1 className="text-2xl font-mono font-bold mb-8">Sistema avançado de gestão para raffles</h1>
-        
-        {/* Improved Stats Cards with animations */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {stats.map((stat, index) => (
-            <Card 
-              key={index} 
-              className="bg-gradient-to-br from-gray-800/80 to-gray-800/30 border border-gray-700/30 animate-border-pulse hover:shadow-lg hover:shadow-gray-700/5 transition-all duration-300"
-            >
-              <div className="font-mono p-4">
-                <p className="text-sm text-gray-400">{stat.label}</p>
-                <p className="text-3xl font-bold text-gray-200">{stat.value}</p>
-              </div>
-            </Card>
-          ))}
-        </div>
-        
-        {/* Tabs with accounts and webhook settings */}
-        <Tabs defaultValue="accounts" className="mb-8">
-          <TabsList className="mb-4 bg-gray-800/50 border border-gray-700/30">
-            <TabsTrigger value="accounts" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Contas</TabsTrigger>
-            <TabsTrigger value="webhooks" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Webhooks Globais</TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="accounts">
-            {/* Filter tabs for accounts */}
-            <Tabs defaultValue="all" className="mb-4">
+        <div className="flex flex-col lg:flex-row gap-6">
+          {/* Left column: Stats and Account Management */}
+          <div className="lg:w-2/3 space-y-6">
+            {/* Stats Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              {stats.map((stat, index) => (
+                <Card 
+                  key={index} 
+                  className="bg-gradient-to-br from-gray-800/80 to-gray-800/30 border border-gray-700/30 animate-border-subtle hover:shadow-lg hover:shadow-gray-700/5 transition-all duration-300"
+                >
+                  <div className="font-mono p-4">
+                    <p className="text-sm text-gray-400">{stat.label}</p>
+                    <p className="text-3xl font-bold text-gray-200">{stat.value}</p>
+                  </div>
+                </Card>
+              ))}
+            </div>
+            
+            {/* Accounts and Webhooks Tabs */}
+            <Tabs defaultValue="accounts" className="mb-8">
               <TabsList className="mb-4 bg-gray-800/50 border border-gray-700/30">
-                <TabsTrigger value="all" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Todas</TabsTrigger>
-                <TabsTrigger value="active" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Ativas</TabsTrigger>
-                <TabsTrigger value="inactive" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Inativas</TabsTrigger>
+                <TabsTrigger value="accounts" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Contas</TabsTrigger>
+                <TabsTrigger value="webhooks" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Webhooks Globais</TabsTrigger>
               </TabsList>
               
-              <TabsContent value="all" className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {accounts.length > 0 ? (
-                  accounts.map(account => (
-                    <AccountCard 
-                      key={account.id}
-                      account={account}
-                      onEdit={handleEditAccount}
-                      onRemove={handleRemoveAccount}
-                      onToggleActive={handleToggleActive}
-                    />
-                  ))
-                ) : (
-                  <div className="col-span-2 text-center py-12">
-                    <p className="text-gray-400 font-mono">
-                      Nenhuma conta cadastrada.{" "}
-                      <Button 
-                        variant="link" 
-                        className="p-0 h-auto font-mono text-gray-300"
-                        onClick={() => setIsModalOpen(true)}
-                      >
-                        Adicionar agora
-                      </Button>
-                    </p>
-                  </div>
-                )}
+              <TabsContent value="accounts">
+                {/* Filter tabs for accounts */}
+                <Tabs defaultValue="all" className="mb-4">
+                  <TabsList className="mb-4 bg-gray-800/50 border border-gray-700/30">
+                    <TabsTrigger value="all" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Todas</TabsTrigger>
+                    <TabsTrigger value="active" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Ativas</TabsTrigger>
+                    <TabsTrigger value="inactive" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Inativas</TabsTrigger>
+                  </TabsList>
+                  
+                  <TabsContent value="all" className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {accounts.length > 0 ? (
+                      accounts.map(account => (
+                        <AccountCard 
+                          key={account.id}
+                          account={account}
+                          onEdit={handleEditAccount}
+                          onRemove={handleRemoveAccount}
+                          onToggleActive={handleToggleActive}
+                        />
+                      ))
+                    ) : (
+                      <div className="col-span-2 text-center py-12">
+                        <p className="text-gray-400 font-mono">
+                          Nenhuma conta cadastrada.{" "}
+                          <Button 
+                            variant="link" 
+                            className="p-0 h-auto font-mono text-gray-300"
+                            onClick={() => setIsModalOpen(true)}
+                          >
+                            Adicionar agora
+                          </Button>
+                        </p>
+                      </div>
+                    )}
+                  </TabsContent>
+                  
+                  <TabsContent value="active" className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {accounts.filter(a => a.isActive).length > 0 ? (
+                      accounts
+                        .filter(account => account.isActive)
+                        .map(account => (
+                          <AccountCard 
+                            key={account.id}
+                            account={account}
+                            onEdit={handleEditAccount}
+                            onRemove={handleRemoveAccount}
+                            onToggleActive={handleToggleActive}
+                          />
+                        ))
+                    ) : (
+                      <div className="col-span-2 text-center py-12">
+                        <p className="text-gray-400 font-mono">
+                          Nenhuma conta ativa encontrada.
+                        </p>
+                      </div>
+                    )}
+                  </TabsContent>
+                  
+                  <TabsContent value="inactive" className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {accounts.filter(a => !a.isActive).length > 0 ? (
+                      accounts
+                        .filter(account => !account.isActive)
+                        .map(account => (
+                          <AccountCard 
+                            key={account.id}
+                            account={account}
+                            onEdit={handleEditAccount}
+                            onRemove={handleRemoveAccount}
+                            onToggleActive={handleToggleActive}
+                          />
+                        ))
+                    ) : (
+                      <div className="col-span-2 text-center py-12">
+                        <p className="text-gray-400 font-mono">
+                          Nenhuma conta inativa encontrada.
+                        </p>
+                      </div>
+                    )}
+                  </TabsContent>
+                </Tabs>
               </TabsContent>
               
-              <TabsContent value="active" className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {accounts.filter(a => a.isActive).length > 0 ? (
-                  accounts
-                    .filter(account => account.isActive)
-                    .map(account => (
-                      <AccountCard 
-                        key={account.id}
-                        account={account}
-                        onEdit={handleEditAccount}
-                        onRemove={handleRemoveAccount}
-                        onToggleActive={handleToggleActive}
-                      />
-                    ))
-                ) : (
-                  <div className="col-span-2 text-center py-12">
-                    <p className="text-gray-400 font-mono">
-                      Nenhuma conta ativa encontrada.
-                    </p>
-                  </div>
-                )}
-              </TabsContent>
-              
-              <TabsContent value="inactive" className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {accounts.filter(a => !a.isActive).length > 0 ? (
-                  accounts
-                    .filter(account => !account.isActive)
-                    .map(account => (
-                      <AccountCard 
-                        key={account.id}
-                        account={account}
-                        onEdit={handleEditAccount}
-                        onRemove={handleRemoveAccount}
-                        onToggleActive={handleToggleActive}
-                      />
-                    ))
-                ) : (
-                  <div className="col-span-2 text-center py-12">
-                    <p className="text-gray-400 font-mono">
-                      Nenhuma conta inativa encontrada.
-                    </p>
-                  </div>
-                )}
+              <TabsContent value="webhooks">
+                <Card className="bg-gradient-to-br from-gray-800/80 to-gray-800/30 border border-gray-700/30 p-6">
+                  <h3 className="font-mono text-lg font-bold mb-4">Webhooks Discord Globais</h3>
+                  <p className="text-sm text-gray-400 mb-6 font-mono">
+                    Configure webhooks globais para todas as contas. Cada conta pode ter configurações específicas que substituem estas.
+                  </p>
+                  
+                  <WebhookSettings
+                    onSave={handleSaveGlobalWebhooks}
+                    initialData={globalWebhooks}
+                  />
+                </Card>
               </TabsContent>
             </Tabs>
-          </TabsContent>
+          </div>
           
-          <TabsContent value="webhooks">
-            <Card className="bg-gradient-to-br from-gray-800/80 to-gray-800/30 border border-gray-700/30 p-6">
-              <h3 className="font-mono text-lg font-bold mb-4">Webhooks Discord Globais</h3>
-              <p className="text-sm text-gray-400 mb-6 font-mono">
-                Configure webhooks globais para todas as contas. Cada conta pode ter configurações específicas que substituem estas.
-              </p>
-              
-              <WebhookSettings
-                onSave={handleSaveGlobalWebhooks}
-                initialData={globalWebhooks}
-              />
-            </Card>
-          </TabsContent>
-        </Tabs>
+          {/* Right column: Whitelist Panel */}
+          <div className="lg:w-1/3">
+            <WhitelistPanel />
+          </div>
+        </div>
       </div>
       
       {/* Account Modal (Add/Edit) */}

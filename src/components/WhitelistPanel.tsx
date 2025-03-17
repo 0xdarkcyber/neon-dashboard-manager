@@ -1,139 +1,201 @@
 
-import React, { useState } from 'react';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import React from 'react';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { ChevronRight, ExternalLink, Twitter, Globe, MessagesSquare } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ExternalLink, Twitter, MessageSquare } from 'lucide-react';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
-export interface WhitelistWin {
+interface WhitelistEntry {
   id: string;
   projectName: string;
   imageUrl: string;
+  date: string;
   mintDate: string;
-  price: string;
   account: string;
   links: {
     website?: string;
     twitter?: string;
     discord?: string;
   };
+  description: string;
 }
 
-interface WhitelistPanelProps {
-  whitelists: WhitelistWin[];
-}
+const mockWhitelistData: WhitelistEntry[] = [
+  {
+    id: 'wl-1',
+    projectName: 'Celestial Guardians',
+    imageUrl: 'https://picsum.photos/seed/picsum1/300/300',
+    date: '2023-06-15',
+    mintDate: '2023-07-01',
+    account: 'Conta Principal',
+    links: {
+      website: 'https://example.com/celestial',
+      twitter: 'https://twitter.com/celestial',
+      discord: 'https://discord.gg/celestial'
+    },
+    description: 'PFP Collection com 5,555 NFTs. Mint em SOL, preço 1 SOL.'
+  },
+  {
+    id: 'wl-2',
+    projectName: 'Neon Samurai',
+    imageUrl: 'https://picsum.photos/seed/picsum2/300/300',
+    date: '2023-06-10',
+    mintDate: '2023-06-30',
+    account: 'Conta Secundária',
+    links: {
+      website: 'https://example.com/neon',
+      twitter: 'https://twitter.com/neon',
+      discord: 'https://discord.gg/neon'
+    },
+    description: 'Collection exclusiva com 3,333 NFTs. Mint em ETH, preço 0.05 ETH.'
+  },
+  {
+    id: 'wl-3',
+    projectName: 'Cryptic Realms',
+    imageUrl: 'https://picsum.photos/seed/picsum3/300/300',
+    date: '2023-06-05',
+    mintDate: '2023-06-25',
+    account: 'Conta Principal',
+    links: {
+      website: 'https://example.com/cryptic',
+      twitter: 'https://twitter.com/cryptic',
+      discord: 'https://discord.gg/cryptic'
+    },
+    description: 'Gamefi project with 10,000 NFTs. Mint em ETH, preço 0.08 ETH.'
+  },
+  {
+    id: 'wl-4',
+    projectName: 'Digital Dreamers',
+    imageUrl: 'https://picsum.photos/seed/picsum4/300/300',
+    date: '2023-06-01',
+    mintDate: '2023-06-20',
+    account: 'Conta Principal',
+    links: {
+      website: 'https://example.com/digital',
+      twitter: 'https://twitter.com/digital',
+      discord: 'https://discord.gg/digital'
+    },
+    description: 'Arte generativa com 7,777 NFTs. Mint em ETH, preço 0.1 ETH.'
+  },
+];
 
-export const WhitelistPanel: React.FC<WhitelistPanelProps> = ({ whitelists }) => {
-  const [selectedWhitelist, setSelectedWhitelist] = useState<WhitelistWin | null>(null);
-
+export const WhitelistPanel = () => {
   return (
-    <Card className="bg-gradient-to-br from-gray-800/80 to-gray-800/30 border border-gray-700/30 animated-border">
-      <CardHeader>
-        <h3 className="font-mono text-lg font-bold text-gray-200">Recent Whitelist Wins</h3>
+    <Card className="bg-gradient-to-br from-gray-800/80 to-gray-800/30 border border-gray-700/30 h-full">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-lg font-mono text-gray-200">Whitelists Ganhas</CardTitle>
       </CardHeader>
+      
       <CardContent className="p-0">
-        <div className="divide-y divide-gray-700/30">
-          {whitelists.map((whitelist) => (
-            <Sheet key={whitelist.id}>
-              <div className="flex items-center justify-between p-4 hover:bg-gray-700/20 transition-colors">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-md overflow-hidden">
-                    <img 
-                      src={whitelist.imageUrl} 
-                      alt={whitelist.projectName} 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-mono text-gray-200">{whitelist.projectName}</h4>
-                    <p className="text-xs text-gray-400">Mint: {whitelist.mintDate}</p>
-                  </div>
-                </div>
-                <SheetTrigger asChild>
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    className="rounded-full w-8 h-8 p-0"
-                    onClick={() => setSelectedWhitelist(whitelist)}
-                  >
-                    <ChevronRight className="h-4 w-4" />
-                  </Button>
-                </SheetTrigger>
-              </div>
-              
-              <SheetContent className="bg-gray-800 border-l border-gray-700/50">
-                <SheetHeader>
-                  <SheetTitle className="font-mono text-gray-200">
-                    {whitelist.projectName}
-                  </SheetTitle>
-                </SheetHeader>
-                
-                <div className="mt-6 space-y-4">
-                  <div className="w-full h-40 rounded-lg overflow-hidden">
-                    <img 
-                      src={whitelist.imageUrl} 
-                      alt={whitelist.projectName}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-gray-400">Mint Date</span>
-                      <span className="text-gray-200">{whitelist.mintDate}</span>
-                    </div>
-                    
-                    <div className="flex justify-between">
-                      <span className="text-gray-400">Price</span>
-                      <span className="text-gray-200">{whitelist.price}</span>
-                    </div>
-                    
-                    <div className="flex justify-between">
-                      <span className="text-gray-400">Account</span>
-                      <span className="text-gray-200">{whitelist.account}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="pt-4 flex gap-2">
-                    {whitelist.links.website && (
-                      <Button variant="outline" size="sm" className="border-gray-700 hover:bg-gray-700" asChild>
-                        <a href={whitelist.links.website} target="_blank" rel="noopener noreferrer">
-                          <Globe className="h-4 w-4 mr-1" />
-                          Website
-                        </a>
-                      </Button>
-                    )}
-                    
-                    {whitelist.links.twitter && (
-                      <Button variant="outline" size="sm" className="border-gray-700 hover:bg-gray-700" asChild>
-                        <a href={whitelist.links.twitter} target="_blank" rel="noopener noreferrer">
-                          <Twitter className="h-4 w-4 mr-1" />
-                          Twitter
-                        </a>
-                      </Button>
-                    )}
-                    
-                    {whitelist.links.discord && (
-                      <Button variant="outline" size="sm" className="border-gray-700 hover:bg-gray-700" asChild>
-                        <a href={whitelist.links.discord} target="_blank" rel="noopener noreferrer">
-                          <MessagesSquare className="h-4 w-4 mr-1" />
-                          Discord
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              </SheetContent>
-            </Sheet>
-          ))}
-          
-          {whitelists.length === 0 && (
-            <div className="p-6 text-center">
-              <p className="text-gray-400 font-mono">No whitelist wins yet.</p>
-            </div>
-          )}
-        </div>
+        <ScrollArea className="h-[calc(100vh-250px)] px-4">
+          <div className="space-y-3 py-2">
+            {mockWhitelistData.map((entry) => (
+              <WhitelistEntryCard key={entry.id} entry={entry} />
+            ))}
+          </div>
+        </ScrollArea>
       </CardContent>
     </Card>
+  );
+};
+
+const WhitelistEntryCard: React.FC<{ entry: WhitelistEntry }> = ({ entry }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  
+  const formattedDate = new Date(entry.date).toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+  
+  const formattedMintDate = new Date(entry.mintDate).toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+  
+  return (
+    <Collapsible 
+      className="bg-gray-800/50 rounded-lg overflow-hidden border border-gray-700/30 animate-border-subtle"
+      open={isExpanded}
+      onOpenChange={setIsExpanded}
+    >
+      <div className="p-3 flex items-center gap-3 cursor-pointer" onClick={() => setIsExpanded(!isExpanded)}>
+        <div className="w-12 h-12 rounded-md overflow-hidden flex-shrink-0 bg-gray-700">
+          <img 
+            src={entry.imageUrl} 
+            alt={entry.projectName} 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="flex-grow min-w-0">
+          <h4 className="font-mono text-gray-200 truncate">{entry.projectName}</h4>
+          <p className="text-xs text-gray-400">Ganho em: {formattedDate}</p>
+        </div>
+        <CollapsibleTrigger asChild>
+          <Button variant="ghost" size="sm" className="p-1 h-auto">
+            <span className="sr-only">Toggle</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={`transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+            >
+              <path d="M18 15l-6-6-6 6" />
+            </svg>
+          </Button>
+        </CollapsibleTrigger>
+      </div>
+      
+      <CollapsibleContent>
+        <div className="px-3 pb-3 pt-0">
+          <div className="bg-gray-800/70 rounded p-3 space-y-2">
+            <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+              <div>
+                <span className="block">Mint date:</span>
+                <span className="font-medium text-gray-300">{formattedMintDate}</span>
+              </div>
+              <div>
+                <span className="block">Conta:</span>
+                <span className="font-medium text-gray-300">{entry.account}</span>
+              </div>
+            </div>
+            
+            <p className="text-xs text-gray-400">{entry.description}</p>
+            
+            <div className="flex gap-2 pt-1">
+              {entry.links.website && (
+                <Button variant="outline" size="sm" className="h-8 bg-gray-700/50 border-gray-600/50 hover:bg-gray-700">
+                  <ExternalLink className="h-3.5 w-3.5" />
+                  <span className="sr-only">Website</span>
+                </Button>
+              )}
+              
+              {entry.links.twitter && (
+                <Button variant="outline" size="sm" className="h-8 bg-gray-700/50 border-gray-600/50 hover:bg-gray-700">
+                  <Twitter className="h-3.5 w-3.5" />
+                  <span className="sr-only">Twitter</span>
+                </Button>
+              )}
+              
+              {entry.links.discord && (
+                <Button variant="outline" size="sm" className="h-8 bg-gray-700/50 border-gray-600/50 hover:bg-gray-700">
+                  <MessageSquare className="h-3.5 w-3.5" />
+                  <span className="sr-only">Discord</span>
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
   );
 };

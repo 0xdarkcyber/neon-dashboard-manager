@@ -40,7 +40,7 @@ const LoginPage = () => {
             ready.boost<span className="text-gray-500">_</span>
           </h2>
           
-          <div className="bg-gray-800/80 border border-gray-700/60 rounded-lg p-6 mb-6 animated-border">
+          <div className="bg-gray-800/80 border border-gray-700/60 rounded-lg p-6 mb-6 animate-border-subtle">
             <pre className="font-mono text-gray-300 text-sm text-left">
               {terminalText}
               <span className="inline-block animate-pulse">▋</span>
@@ -53,7 +53,7 @@ const LoginPage = () => {
             className="w-full bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-gray-600 transition-all duration-300 py-6"
           >
             <Terminal className="mr-2 h-5 w-5" />
-            {loading ? "Connecting..." : "Login with Discord"}
+            {loading ? "Connecting..." : "Login"}
           </Button>
         </div>
       </div>
