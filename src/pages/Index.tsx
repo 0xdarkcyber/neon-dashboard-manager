@@ -44,7 +44,7 @@ const Index = () => {
         
         <div className="space-y-8">
           <p className="text-lg md:text-xl text-gray-400 font-mono max-w-xl mx-auto floating-delay-1">
-            Sistema avançado de gestão para raffles
+            Advanced raffle management system
           </p>
           
           <Link to="/dashboard">
@@ -63,7 +63,7 @@ const Index = () => {
       
       <div className="absolute bottom-8 w-full max-w-md">
         <div className="text-center text-gray-500 text-sm font-mono floating-delay-3">
-          <p>© 2023 ready.boost • Todos os direitos reservados</p>
+          <p>© 2023 ready.boost • All rights reserved</p>
         </div>
       </div>
     </div>

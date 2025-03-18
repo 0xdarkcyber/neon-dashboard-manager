@@ -26,13 +26,13 @@ export const WebhookSettings = ({ onSave, initialData }: WebhookSettingsProps) =
       error: errorWebhook,
       win: winWebhook
     });
-    toast.success("Webhooks salvos com sucesso");
+    toast.success("Webhooks saved successfully");
   };
   
   return (
     <div className="space-y-4 mt-4">
       <div className="space-y-2">
-        <label htmlFor="main-webhook" className="font-mono text-sm text-gray-300">Webhook Principal</label>
+        <label htmlFor="main-webhook" className="font-mono text-sm text-gray-300">Main Webhook</label>
         <Input 
           id="main-webhook" 
           placeholder="https://discord.com/api/webhooks/..." 
@@ -40,11 +40,11 @@ export const WebhookSettings = ({ onSave, initialData }: WebhookSettingsProps) =
           value={mainWebhook}
           onChange={(e) => setMainWebhook(e.target.value)}
         />
-        <p className="text-xs text-gray-400 font-mono">Todas as notificações gerais</p>
+        <p className="text-xs text-gray-400 font-mono">All general notifications</p>
       </div>
       
       <div className="space-y-2">
-        <label htmlFor="error-webhook" className="font-mono text-sm text-gray-300">Webhook de Erros</label>
+        <label htmlFor="error-webhook" className="font-mono text-sm text-gray-300">Error Webhook</label>
         <Input 
           id="error-webhook" 
           placeholder="https://discord.com/api/webhooks/..." 
@@ -52,11 +52,11 @@ export const WebhookSettings = ({ onSave, initialData }: WebhookSettingsProps) =
           value={errorWebhook}
           onChange={(e) => setErrorWebhook(e.target.value)}
         />
-        <p className="text-xs text-gray-400 font-mono">Alertas de erro do sistema</p>
+        <p className="text-xs text-gray-400 font-mono">System error alerts</p>
       </div>
       
       <div className="space-y-2">
-        <label htmlFor="win-webhook" className="font-mono text-sm text-gray-300">Webhook de Vitórias</label>
+        <label htmlFor="win-webhook" className="font-mono text-sm text-gray-300">Win Webhook</label>
         <Input 
           id="win-webhook" 
           placeholder="https://discord.com/api/webhooks/..." 
@@ -64,14 +64,14 @@ export const WebhookSettings = ({ onSave, initialData }: WebhookSettingsProps) =
           value={winWebhook}
           onChange={(e) => setWinWebhook(e.target.value)}
         />
-        <p className="text-xs text-gray-400 font-mono">Notificações de raffles ganhas</p>
+        <p className="text-xs text-gray-400 font-mono">Raffle win notifications</p>
       </div>
       
       <Button 
         className="w-full mt-4 bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700"
         onClick={handleSave}
       >
-        Salvar Webhooks
+        Save Webhooks
       </Button>
     </div>
   );

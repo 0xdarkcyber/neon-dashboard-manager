@@ -29,36 +29,36 @@ const Notifications = () => {
     {
       id: 1,
       type: "error",
-      message: "Falha na conexão com a API do Alphabot",
+      message: "Connection failure with Alphabot API",
       timestamp: "10:23:45",
       read: false
     },
     {
       id: 2,
       type: "success",
-      message: "Raffle ganho: ETH Denver Whitelist",
+      message: "Raffle won: ETH Denver Whitelist",
       timestamp: "09:15:32",
       read: false
     },
     {
       id: 3,
       type: "info",
-      message: "Conta #2 participou de 15 raffles hoje",
+      message: "Account #2 participated in 15 raffles today",
       timestamp: "08:45:21",
       read: true
     },
     {
       id: 4,
       type: "error",
-      message: "Proxy #5 bloqueado por Captcha",
-      timestamp: "Ontem, 23:12:05",
+      message: "Proxy #5 blocked by Captcha",
+      timestamp: "Yesterday, 23:12:05",
       read: true
     },
     {
       id: 5,
       type: "success",
-      message: "Raffle ganho: NFT Minter Access",
-      timestamp: "Ontem, 20:35:11",
+      message: "Raffle won: NFT Minter Access",
+      timestamp: "Yesterday, 20:35:11",
       read: true
     }
   ]);
@@ -115,21 +115,21 @@ const Notifications = () => {
             className="w-full justify-start font-mono text-muted-foreground"
           >
             <BarChart3 className="mr-2 h-5 w-5" />
-            Estatísticas
+            Statistics
           </Button>
           <Button 
             variant="ghost" 
             className="w-full justify-start font-mono text-muted-foreground"
           >
             <Settings className="mr-2 h-5 w-5" />
-            Configurações
+            Settings
           </Button>
           <Button 
             variant="ghost" 
             className="w-full justify-start font-mono text-foreground"
           >
             <Bell className="mr-2 h-5 w-5" />
-            Notificações
+            Notifications
           </Button>
         </nav>
         
@@ -147,7 +147,7 @@ const Notifications = () => {
       {/* Main content */}
       <div className="ml-64 p-6">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-mono font-bold">Notificações</h1>
+          <h1 className="text-2xl font-mono font-bold">Notifications</h1>
           
           <div className="flex items-center gap-4">
             <Button 
@@ -155,7 +155,7 @@ const Notifications = () => {
               className="font-mono text-sm"
               onClick={markAllAsRead}
             >
-              Marcar todas como lidas
+              Mark all as read
             </Button>
             <Button variant="ghost" className="rounded-full w-10 h-10 p-0">
               <User className="h-5 w-5" />
@@ -166,9 +166,9 @@ const Notifications = () => {
         <Card className="card-stats p-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="font-mono text-lg font-bold">Sistema de Alertas</h3>
+              <h3 className="font-mono text-lg font-bold">Alert System</h3>
               <div className="font-mono text-sm text-muted-foreground">
-                {notifications.filter(n => !n.read).length} não lidas
+                {notifications.filter(n => !n.read).length} unread
               </div>
             </div>
             
