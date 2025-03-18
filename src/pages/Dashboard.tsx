@@ -31,7 +31,7 @@ const Dashboard = () => {
     setAccounts([
       {
         id: "acc-1",
-        name: "Conta Principal",
+        name: "Main Account",
         apiKey: "api-key-xxxxx",
         isActive: true,
         webhooks: {
@@ -43,11 +43,11 @@ const Dashboard = () => {
           totalRaffles: 427,
           wins: 24
         },
-        lastUsed: "2h atrás"
+        lastUsed: "2h ago"
       },
       {
         id: "acc-2",
-        name: "Conta Secundária",
+        name: "Secondary Account",
         apiKey: "api-key-yyyyy",
         isActive: false,
         webhooks: {
@@ -59,7 +59,7 @@ const Dashboard = () => {
           totalRaffles: 189,
           wins: 11
         },
-        lastUsed: "5d atrás"
+        lastUsed: "5d ago"
       }
     ]);
     
@@ -122,10 +122,10 @@ const Dashboard = () => {
   }, { totalAccounts: 0, activeAccounts: 0, totalRaffles: 0, totalWins: 0 });
 
   const stats = [
-    { label: "Total Contas", value: totalStats.totalAccounts.toString() },
-    { label: "Contas Ativas", value: totalStats.activeAccounts.toString() },
+    { label: "Total Accounts", value: totalStats.totalAccounts.toString() },
+    { label: "Active Accounts", value: totalStats.activeAccounts.toString() },
     { label: "Total Raffles", value: totalStats.totalRaffles.toLocaleString() },
-    { label: "Raffles Ganhas", value: totalStats.totalWins.toLocaleString() },
+    { label: "Won Raffles", value: totalStats.totalWins.toLocaleString() },
   ];
 
   return (
@@ -148,7 +148,7 @@ const Dashboard = () => {
               }}
             >
               <Plus className="mr-2 h-4 w-4" />
-              Nova Conta
+              New Account
             </Button>
             <Button variant="ghost" className="rounded-full w-10 h-10 p-0 bg-gray-800 text-gray-300">
               <User className="h-5 w-5" />
@@ -179,17 +179,17 @@ const Dashboard = () => {
             {/* Accounts and Webhooks Tabs */}
             <Tabs defaultValue="accounts" className="mb-8">
               <TabsList className="mb-4 bg-gray-800 border border-gray-700">
-                <TabsTrigger value="accounts" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Contas</TabsTrigger>
-                <TabsTrigger value="webhooks" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Webhooks Globais</TabsTrigger>
+                <TabsTrigger value="accounts" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-gray-300">Accounts</TabsTrigger>
+                <TabsTrigger value="webhooks" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-gray-300">Global Webhooks</TabsTrigger>
               </TabsList>
               
               <TabsContent value="accounts">
                 {/* Filter tabs for accounts */}
                 <Tabs defaultValue="all" className="mb-4">
                   <TabsList className="mb-4 bg-gray-800 border border-gray-700">
-                    <TabsTrigger value="all" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Todas</TabsTrigger>
-                    <TabsTrigger value="active" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Ativas</TabsTrigger>
-                    <TabsTrigger value="inactive" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-white">Inativas</TabsTrigger>
+                    <TabsTrigger value="all" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-gray-300">All</TabsTrigger>
+                    <TabsTrigger value="active" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-gray-300">Active</TabsTrigger>
+                    <TabsTrigger value="inactive" className="font-mono data-[state=active]:bg-gray-700 data-[state=active]:text-gray-300">Inactive</TabsTrigger>
                   </TabsList>
                   
                   <TabsContent value="all" className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -206,13 +206,13 @@ const Dashboard = () => {
                     ) : (
                       <div className="col-span-2 text-center py-12">
                         <p className="text-gray-400 font-mono">
-                          Nenhuma conta cadastrada.{" "}
+                          No accounts added.{" "}
                           <Button 
                             variant="link" 
                             className="p-0 h-auto font-mono text-gray-300"
                             onClick={() => setIsModalOpen(true)}
                           >
-                            Adicionar agora
+                            Add now
                           </Button>
                         </p>
                       </div>
@@ -235,7 +235,7 @@ const Dashboard = () => {
                     ) : (
                       <div className="col-span-2 text-center py-12">
                         <p className="text-gray-400 font-mono">
-                          Nenhuma conta ativa encontrada.
+                          No active accounts found.
                         </p>
                       </div>
                     )}
@@ -257,7 +257,7 @@ const Dashboard = () => {
                     ) : (
                       <div className="col-span-2 text-center py-12">
                         <p className="text-gray-400 font-mono">
-                          Nenhuma conta inativa encontrada.
+                          No inactive accounts found.
                         </p>
                       </div>
                     )}
@@ -267,9 +267,9 @@ const Dashboard = () => {
               
               <TabsContent value="webhooks">
                 <Card className="bg-gray-800 border border-gray-700 p-6">
-                  <h3 className="font-mono text-lg font-bold mb-4">Webhooks Discord Globais</h3>
+                  <h3 className="font-mono text-lg font-bold mb-4">Global Discord Webhooks</h3>
                   <p className="text-sm text-gray-400 mb-6 font-mono">
-                    Configure webhooks globais para todas as contas. Cada conta pode ter configurações específicas que substituem estas.
+                    Configure global webhooks for all accounts. Each account can have specific settings that override these.
                   </p>
                   
                   <WebhookSettings

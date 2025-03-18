@@ -28,7 +28,7 @@ export const AccountCard = ({
   
   const handleToggle = () => {
     onToggleActive(account.id!, !account.isActive);
-    toast.success(`Conta ${!account.isActive ? 'ativada' : 'desativada'} com sucesso`);
+    toast.success(`Account ${!account.isActive ? 'activated' : 'deactivated'} successfully`);
   };
   
   const confirmDelete = () => {
@@ -40,7 +40,7 @@ export const AccountCard = ({
     
     onRemove(account.id!);
     setIsConfirmingDelete(false);
-    toast.success("Conta removida com sucesso");
+    toast.success("Account removed successfully");
   };
   
   return (
@@ -51,12 +51,12 @@ export const AccountCard = ({
             {account.name}
             {!account.isActive && (
               <span className="text-xs bg-gray-800 px-2 py-0.5 rounded-full text-gray-400">
-                Inativa
+                Inactive
               </span>
             )}
           </h3>
           <p className="text-xs text-gray-500 font-mono flex items-center gap-1">
-            <span>Último uso: {account.lastUsed || "Nunca"}</span>
+            <span>Last used: {account.lastUsed || "Never"}</span>
           </p>
         </div>
         <div className="flex items-center gap-1">
@@ -91,15 +91,15 @@ export const AccountCard = ({
       
       <div className="mt-6 grid grid-cols-3 gap-3 text-sm font-mono">
         <div className="bg-gray-900/50 rounded p-2">
-          <p className="text-xs text-gray-500">Raffles Total</p>
+          <p className="text-xs text-gray-500">Total Raffles</p>
           <p className="font-bold">{account.stats?.totalRaffles || 0}</p>
         </div>
         <div className="bg-gray-900/50 rounded p-2">
-          <p className="text-xs text-gray-500">Vitórias</p>
+          <p className="text-xs text-gray-500">Wins</p>
           <p className="font-bold">{account.stats?.wins || 0}</p>
         </div>
         <div className="bg-gray-900/50 rounded p-2">
-          <p className="text-xs text-gray-500">Taxa</p>
+          <p className="text-xs text-gray-500">Win Rate</p>
           <p className="font-bold">
             {account.stats?.totalRaffles 
               ? ((account.stats.wins / account.stats.totalRaffles) * 100).toFixed(1) + '%'

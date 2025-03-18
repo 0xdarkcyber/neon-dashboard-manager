@@ -36,7 +36,7 @@ export const WebhookSettings = ({ onSave, initialData }: WebhookSettingsProps) =
         <Input 
           id="main-webhook" 
           placeholder="https://discord.com/api/webhooks/..." 
-          className="bg-gray-800 border-gray-700 text-gray-300 placeholder-gray-500"
+          className="bg-gray-900 border-gray-700 text-gray-300 placeholder-gray-500"
           value={mainWebhook}
           onChange={(e) => setMainWebhook(e.target.value)}
         />
@@ -48,7 +48,7 @@ export const WebhookSettings = ({ onSave, initialData }: WebhookSettingsProps) =
         <Input 
           id="error-webhook" 
           placeholder="https://discord.com/api/webhooks/..." 
-          className="bg-gray-800 border-gray-700 text-gray-300 placeholder-gray-500"
+          className="bg-gray-900 border-gray-700 text-gray-300 placeholder-gray-500"
           value={errorWebhook}
           onChange={(e) => setErrorWebhook(e.target.value)}
         />
@@ -60,7 +60,7 @@ export const WebhookSettings = ({ onSave, initialData }: WebhookSettingsProps) =
         <Input 
           id="win-webhook" 
           placeholder="https://discord.com/api/webhooks/..." 
-          className="bg-gray-800 border-gray-700 text-gray-300 placeholder-gray-500"
+          className="bg-gray-900 border-gray-700 text-gray-300 placeholder-gray-500"
           value={winWebhook}
           onChange={(e) => setWinWebhook(e.target.value)}
         />
@@ -68,7 +68,7 @@ export const WebhookSettings = ({ onSave, initialData }: WebhookSettingsProps) =
       </div>
       
       <Button 
-        className="w-full mt-4 bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700"
+        className="w-full mt-4 bg-gray-900 hover:bg-gray-700 text-gray-300 border border-gray-700"
         onClick={handleSave}
       >
         Save Webhooks

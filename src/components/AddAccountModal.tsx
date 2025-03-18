@@ -53,7 +53,7 @@ export const AddAccountModal = ({
     e.preventDefault();
     
     if (!accountName || !apiKey) {
-      toast.error("Preencha todos os campos obrigatórios");
+      toast.error("Please fill all required fields");
       return;
     }
     
@@ -72,12 +72,12 @@ export const AddAccountModal = ({
           totalRaffles: 0,
           wins: 0
         },
-        lastUsed: editData?.lastUsed || "Nunca"
+        lastUsed: editData?.lastUsed || "Never"
       };
       
       onAdd(accountData);
       
-      toast.success(`Conta ${isEdit ? 'atualizada' : 'adicionada'} com sucesso`);
+      toast.success(`Account ${isEdit ? 'updated' : 'added'} successfully`);
       setIsLoading(false);
       
       // Reset form if not editing
@@ -97,7 +97,7 @@ export const AddAccountModal = ({
       <DialogContent className="sm:max-w-[500px] bg-gray-900 border-gray-800 text-gray-300">
         <DialogHeader>
           <DialogTitle className="text-xl font-mono text-gray-300">
-            {isEdit ? `Editar Conta: ${editData?.name}` : "Adicionar Nova Conta"}
+            {isEdit ? `Edit Account: ${editData?.name}` : "Add New Account"}
           </DialogTitle>
         </DialogHeader>
         
@@ -107,7 +107,7 @@ export const AddAccountModal = ({
               value="account" 
               className="flex-1 text-gray-400 data-[state=active]:bg-gray-900 data-[state=active]:text-gray-300"
             >
-              Dados da Conta
+              Account Data
             </TabsTrigger>
             <TabsTrigger 
               value="webhooks" 
@@ -126,10 +126,10 @@ export const AddAccountModal = ({
           <form onSubmit={handleSubmit}>
             <TabsContent value="account" className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-gray-300">Nome da Conta</Label>
+                <Label htmlFor="name" className="text-gray-300">Account Name</Label>
                 <Input
                   id="name"
-                  placeholder="Ex: Conta Principal"
+                  placeholder="Ex: Main Account"
                   value={accountName}
                   onChange={(e) => setAccountName(e.target.value)}
                   className="bg-gray-800 border-gray-700 focus:border-gray-600 text-gray-300 placeholder-gray-500"
@@ -141,7 +141,7 @@ export const AddAccountModal = ({
                 <Input
                   id="apiKey"
                   type="password"
-                  placeholder="Cole sua API key aqui"
+                  placeholder="Paste your API key here"
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
                   className="bg-gray-800 border-gray-700 focus:border-gray-600 text-gray-300 placeholder-gray-500"
@@ -171,7 +171,7 @@ export const AddAccountModal = ({
                 disabled={isLoading}
                 className="border-gray-700 text-gray-300 hover:bg-gray-800 bg-transparent"
               >
-                Cancelar
+                Cancel
               </Button>
               <Button 
                 type="submit" 
@@ -179,8 +179,8 @@ export const AddAccountModal = ({
                 disabled={isLoading}
               >
                 {isLoading ? 
-                  (isEdit ? "Atualizando..." : "Adicionando...") : 
-                  (isEdit ? "Salvar Alterações" : "Adicionar Conta")
+                  (isEdit ? "Updating..." : "Adding...") : 
+                  (isEdit ? "Save Changes" : "Add Account")
                 }
               </Button>
             </DialogFooter>
